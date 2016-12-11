@@ -10,3 +10,8 @@ For example:
 @import './variables/components';
 @import './themes/default';
 */
+$icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+@import "bootstrap_theme_variables";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap";
+@import "bootstrap_theme";
+

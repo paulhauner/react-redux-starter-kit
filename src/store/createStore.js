@@ -1,6 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import { browserHistory } from 'react-router'
+import persistState from 'redux-localstorage'
 import makeRootReducer from './reducers'
 import { updateLocation } from './location'
 
@@ -13,12 +14,18 @@ export default (initialState = {}) => {
   // ======================================================
   // Store Enhancers
   // ======================================================
-  const enhancers = []
 
-  let composeEnhancers = compose
+  // Which keys on state should we persist in browser localStorage?
+  const keysToPersist = []
+
+  const enhancers = [
+    persistState(keysToPersist)
+  ];
+
+  let composeEnhancers = compose;
 
   if (__DEV__) {
-    const composeWithDevToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    const composeWithDevToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
     if (typeof composeWithDevToolsExtension === 'function') {
       composeEnhancers = composeWithDevToolsExtension
     }
