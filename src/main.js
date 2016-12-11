@@ -23,6 +23,17 @@ let render = () => {
   )
 }
 
+// ========================================================
+// Developer Tools Setup
+// ========================================================
+if (__DEV__) {
+  if (window.__REDUX_DEVTOOLS_EXTENSION__) {
+    // uncomment the line below to have react devtools open automatically whenever we
+    // are in dev mode. This was annoying on a small monitor so I removed it.
+    // window.__REDUX_DEVTOOLS_EXTENSION__.open()
+  }
+}
+
 // This code is excluded from production bundle
 if (__DEV__) {
   if (module.hot) {
